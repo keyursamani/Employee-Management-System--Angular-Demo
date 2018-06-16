@@ -1,0 +1,76 @@
+﻿ <form novalidate class="form-inline" name="editForm">
+      <div ng-show="activeEditing">
+         <div class="row">
+             <div class="lead text-center">
+                 <span class=" col-sm-6 form-group">
+                     <label for="LastName">Last Name:</label>
+                     <input class="form-control" type="text" name="LastName" ng-model="contactToEdit.lastName" ng-required="true" />
+                 </span>
+                 <span class="help-block" ng-show="editForm.LastName.$error.required">Last name is required</span>
+                 <span class="form-group col-sm-6">
+                     <label for="FirstName">First Name:</label>
+                     <input class="form-control" type="text" name="FirstName" ng-model="contactToEdit.firstName" ng-required="true" />
+                 </span>
+                 <span class="help-block" ng-show="editForm.FirstName.$error.required">First name is required</span>
+             </div>
+         </div>
+      </div>
+       <div ng-show="activeEditing" class="row">
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <span class="col-sm-2">
+                                    <label for="Line1">Address:</label>
+                                </span>
+                                <span class="col-sm-10">
+                                    <input class="form-control" type="text" name="address" ng-model="contactToEdit.address" ng-required="true" />
+                                </span>
+                                <span class="help-block" ng-show="editForm.address.$error.required">Address  is required</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5 col-sm-offset-2">
+                                    <label class="sr-only" for="City">City:</label>
+                                    <input class="form-control" name="city" type="text" ng-model="contactToEdit.city" ng-required="true" />
+                                    <span class="help-block" ng-show="editForm.city.$error.required">City  is required</span>
+                                </div>
+                                <span class="col-sm-1">
+                                    <label for="State" class="sr-only">State:</label>
+                                    <input class="form-control" name="state" type="text" ng-model="contactToEdit.state" ng-required="true" ng-pattern="/^[A-Z][A-Z]$/"/>
+                                </span>
+
+                                <span class="col-sm-2">
+                                    <label for="Zip" class="sr-only">Zip</label>
+                                    <input class="form-control" name="zip" type="text" ng-model="contactToEdit.zip" ng-required="true" ng-pattern="/^[0-9]{5}$/" />
+                                </span>
+
+                            </div>
+                            <span class="help-block" ng-show="editForm.state.$error.required">State  is required</span>
+                            <span class="help-block" ng-show="editForm.state.$error.pattern">State must be two capital letters</span>
+                            <span class="help-block" ng-show="editForm.zip.$error.required">zip  is required</span>
+                            <span class="help-block" ng-show="editForm.zip.$error.pattern">Zip must be of  Five Letters</span>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <label for="HomePhone" class="col-sm-3">home phone:</label>
+                                <input class="form-control" name="homePhone" type="tel" ng-model="contactToEdit.homePhone" ng-required="true" ng-pattern="/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/" />
+                                <span class="help-block" ng-show="editForm.homePhone.$error.required">homePhone  is required</span>
+                                <span class="help-block" ng-show="editForm.homePhone.$error.pattern">homePhone  is Invalid</span>
+                            </div>
+                            <div class="row">
+                                <label for="WorkPhone" class="col-sm-3">work phone:</label>
+                                <input class="form-control" name="WorkPhone" type="tel" ng-model="contactToEdit.workPhone" ng-required="true" />
+                                <span class="help-block" ng-show="editForm.WorkPhone.$error.required">WorkPhone  is required</span>
+                            </div>
+                            <div class="row">
+                                <label for="CellPhone" class="col-sm-3">cell phone:</label>
+                                <input class="form-control" name="CellPhone" type="tel" ng-model="contactToEdit.cellPhone" ng-required="true" />
+                                <span class="help-block" ng-show="editForm.CellPhone.$error.required">CellPhone  is required</span>
+                            </div>
+                        </div>
+                    </div>
+
+     <button ng-disabled="editForm.$dirty && editForm.$invalid" ng-click="save()">
+         {{getEditText()}}
+     </button>
+    
+
+</form>
